@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) UIGravityBehavior *gravityBehavior;
 @property (strong, nonatomic) UICollisionBehavior *collisionBehavior;
+@property (strong, nonatomic) UIDynamicItemBehavior *dynamicItemBehavior;
 
 @end
 
@@ -25,9 +26,19 @@ NS_ASSUME_NONNULL_BEGIN
     if (self) {
         [self addChildBehavior:self.gravityBehavior];
         [self addChildBehavior:self.collisionBehavior];
+        [self addChildBehavior:self.dynamicItemBehavior];
     }
     
     return self;
+}
+
+- (UIDynamicItemBehavior *)dynamicItemBehavior {
+    if (!_dynamicItemBehavior) {
+        _dynamicItemBehavior = [[UIDynamicItemBehavior alloc] init];
+        _dynamicItemBehavior.allowsRotation = NO;
+    }
+    
+    return _dynamicItemBehavior;
 }
 
 - (UIGravityBehavior *) gravityBehavior {
@@ -51,11 +62,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addItem: (id<UIDynamicItem>) item {
     [self.gravityBehavior addItem: item];
     [self.collisionBehavior addItem: item];
+    [self.dynamicItemBehavior addItem: item];
 }
 
 - (void)removeItem:(id<UIDynamicItem>) item {
     [self.gravityBehavior removeItem: item];
     [self.collisionBehavior removeItem: item];
+    [self.dynamicItemBehavior removeItem: item];
 }
 
 @end

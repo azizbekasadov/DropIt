@@ -15,12 +15,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oH-tA-ILB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oH-tA-ILB" customClass="BezierPathView">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Rqi-cU-Gvj" appends="YES" id="Tam-6N-kcN"/>
+                                    <outletCollection property="gestureRecognizers" destination="Kob-pi-4Np" appends="YES" id="rF4-UH-rL4"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -42,6 +43,11 @@
                         <action selector="handleTapGameViewGesture:" destination="BYZ-38-t0r" id="VNd-he-oeG"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Kob-pi-4Np">
+                    <connections>
+                        <action selector="handlePanGameViewGesture:" destination="BYZ-38-t0r" id="oNv-X9-469"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="138" y="137"/>
         </scene>
